@@ -273,11 +273,10 @@ graph-building primitives noted above.</p>
 </span><span data-line="4">
 </span><span data-line="5"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span data-line="6">
-</span><span data-line="7"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai.authoring</span><span class="w"> </span><span class="kn">import</span> <span class="n">AIModelAsset</span><span class="p">,</span> <span class="n">AIProgram</span><span class="p">,</span> <span class="n">Module</span><span class="p">,</span> <span class="n">TensorSpec</span>
-</span><span data-line="8">
-</span><span data-line="9"><span class="c1"># Graph-building primitives — pending re-export from coreai.authoring.</span>
-</span><span data-line="10"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai._compiler.dialects</span><span class="w"> </span><span class="kn">import</span> <span class="n">coreai</span> <span class="k">as</span> <span class="n">ops</span>
-</span><span data-line="11"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai._compiler.ir</span><span class="w"> </span><span class="kn">import</span> <span class="n">Value</span>
+</span><span data-line="7"><span class="c1"># Graph-building primitives — pending re-export from coreai.authoring.</span>
+</span><span data-line="8"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai._compiler.dialects</span><span class="w"> </span><span class="kn">import</span> <span class="n">coreai</span> <span class="k">as</span> <span class="n">ops</span>
+</span><span data-line="9"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai._compiler.ir</span><span class="w"> </span><span class="kn">import</span> <span class="n">Value</span>
+</span><span data-line="10"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai.authoring</span><span class="w"> </span><span class="kn">import</span> <span class="n">AIModelAsset</span><span class="p">,</span> <span class="n">AIProgram</span><span class="p">,</span> <span class="n">Module</span><span class="p">,</span> <span class="n">TensorSpec</span>
 </span></pre></div>
 </div>
 </div>
@@ -321,8 +320,9 @@ call <code class="docutils literal notranslate"><span class="pre">main</span></c
 </span><span data-line="7">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Value</span><span class="p">,</span> <span class="n">output_spec</span><span class="p">]:</span>
 </span><span data-line="8">        <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </span><span data-line="9">
-</span><span data-line="10"><span class="n">module</span><span class="o">.</span><span class="n">verify</span><span class="p">()</span>
-</span><span data-line="11"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Module verified.&quot;</span><span class="p">)</span>
+</span><span data-line="10">
+</span><span data-line="11"><span class="n">module</span><span class="o">.</span><span class="n">verify</span><span class="p">()</span>
+</span><span data-line="12"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Module verified.&quot;</span><span class="p">)</span>
 </span></pre></div>
 </div>
 </div>
