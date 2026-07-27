@@ -7,9 +7,9 @@
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=9454f7d5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=05f3bbaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc932304" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -262,7 +262,7 @@ data-aria-dark="Switch to auto color mode">
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai.authoring</span><span class="w"> </span><span class="kn">import</span> <span class="n">MetalParameter</span>
 </span><span data-line="3">
 </span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchMetalKernel</span>
@@ -295,7 +295,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Call the kernel inside an <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>. You must specify <code class="docutils literal notranslate"><span class="pre">threads_per_grid</span></code>, <code class="docutils literal notranslate"><span class="pre">threads_per_thread_group</span></code>, and <code class="docutils literal notranslate"><span class="pre">result_shapes</span></code> at each call site.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 </span><span data-line="3">
 </span><span data-line="4">
@@ -318,7 +318,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Export the model as usual. Custom kernel ops are preserved through <code class="docutils literal notranslate"><span class="pre">run_decompositions()</span></code> — they are not decomposed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_decomp_table</span>
 </span><span data-line="4">
@@ -337,7 +337,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Use <code class="docutils literal notranslate"><span class="pre">register_custom_kernels()</span></code> to tell the converter how to lower the kernel ops. This must be called <strong>before</strong> <code class="docutils literal notranslate"><span class="pre">add_exported_program()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchConverter</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchConverter</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="n">converter</span> <span class="o">=</span> <span class="n">TorchConverter</span><span class="p">()</span>
 </span><span data-line="4"><span class="n">converter</span><span class="o">.</span><span class="n">register_custom_kernels</span><span class="p">([</span><span class="n">custom_add</span><span class="p">])</span>
@@ -359,7 +359,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Use <code class="docutils literal notranslate"><span class="pre">template_dtypes</span></code> to write a single kernel that works across multiple data types. Placeholder strings in the Metal source are replaced with the actual Metal type at compile time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2">
 </span><span data-line="3">
 </span><span data-line="4"><span class="k">def</span><span class="w"> </span><span class="nf">torch_matmul</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
@@ -396,7 +396,7 @@ data-aria-dark="Switch to auto color mode">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 </span><span data-line="3">
 </span><span data-line="4">
@@ -489,5 +489,6 @@ data-aria-dark="Switch to auto color mode">
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script src="../_static/sidebar-wrap.js?v=1515cd75"></script>
       <script src="../_static/copy-page-button.js?v=d5e0191b"></script></body>
 </html>

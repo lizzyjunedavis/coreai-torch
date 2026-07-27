@@ -7,9 +7,9 @@
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d88b86f9" />
     <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=9454f7d5" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=05f3bbaf" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=bc932304" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -164,7 +164,6 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#what-is-core-ai">What Is Core AI?</a></li>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#quick-example">Quick example</a></li>
 <li><a class="reference internal" href="#choosing-your-workflow">Choosing your workflow</a></li>
@@ -238,19 +237,6 @@ data-aria-dark="Switch to auto color mode">
           <section class="tex2jax_ignore mathjax_ignore" id="core-ai-pytorch-extensions-coreai-torch">
 <h1>Core AI PyTorch Extensions (coreai-torch)<a class="headerlink" href="#core-ai-pytorch-extensions-coreai-torch" title="Link to this heading">¶</a></h1>
 <p>Bring PyTorch models to Core AI for on-device execution.</p>
-<section id="what-is-core-ai">
-<h2>What Is Core AI?<a class="headerlink" href="#what-is-core-ai" title="Link to this heading">¶</a></h2>
-<p>Core AI is a set of technologies for deploying machine learning models on Apple hardware, covering the full model deployment lifecycle: from model optimization and conversion, to debugging, to integration into your app. Models run entirely on device on Apple Silicon, with no server required.</p>
-<img alt="Diagram of the Core AI ecosystem. At the top, Core AI Models provides ready-to-use models and examples. Core AI Optimization and Core AI PyTorch Extensions prepare models for deployment, producing a .aimodel file. Core AI Debugger and Xcode support integration and debugging. Core AI Framework runs models on device." class="align-center" src="_images/core-ai-ecosystem.png" />
-<p>The Core AI ecosystem consists of the following components:</p>
-<ul class="simple">
-<li><p>Convert PyTorch models to the Core AI model format (<code class="docutils literal notranslate"><span class="pre">.aimodel</span></code>) using <a class="reference external" href="https://github.com/apple/coreai-torch">Core AI PyTorch Extensions</a></p></li>
-<li><p>Compress models with quantization, palettization, and pruning using <a class="reference external" href="https://github.com/apple/coreai-optimization">Core AI Optimization</a></p></li>
-<li><p>Load and run models in your app with the <a class="reference external" href="https://developer.apple.com/documentation/coreai">Core AI Framework</a></p></li>
-<li><p>Inspect, debug, and profile models using <a class="reference external" href="https://developer.apple.com/documentation/coreai/inspecting-debugging-and-profiling-core-ai-models">Core AI Debugger</a></p></li>
-<li><p>Get popular open-source non-LLM and LLM models, with conversion, re-authoring, and optimization scripts, along with Swift app integration code using <a class="reference external" href="https://github.com/apple/coreai-models">Core AI Models</a></p></li>
-</ul>
-</section>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
 <p>Core AI PyTorch Extensions (<code class="docutils literal notranslate"><span class="pre">coreai-torch</span></code>) is a Python package that bridges PyTorch and Core AI. You can use it to bring up an existing PyTorch model — exported as a <code class="docutils literal notranslate"><span class="pre">torch.export.ExportedProgram</span></code> — into a Core AI <code class="docutils literal notranslate"><span class="pre">AIProgram</span></code> ready to run on Apple hardware, traversing the FX graph node-by-node and mapping ATen operators to Core AI operations. You can equally use it to author Core AI models directly from PyTorch by composing the library of composite ops in <code class="docutils literal notranslate"><span class="pre">coreai_torch.composite_ops</span></code>, authoring new ops via <code class="docutils literal notranslate"><span class="pre">register_torch_lowering</span></code>, and authoring inline Metal GPU kernels through <code class="docutils literal notranslate"><span class="pre">TorchMetalKernel</span></code> and <code class="docutils literal notranslate"><span class="pre">register_custom_kernels</span></code> — all expressed as PyTorch <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>s and lowered to Core AI IR that the compiler recognizes and optimizes natively.</p>
@@ -367,5 +353,6 @@ data-aria-dark="Switch to auto color mode">
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="_static/shibuya.js?v=50760d75"></script>
+      <script src="_static/sidebar-wrap.js?v=1515cd75"></script>
       <script src="_static/copy-page-button.js?v=d5e0191b"></script></body>
 </html>

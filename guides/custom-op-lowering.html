@@ -7,9 +7,9 @@
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=9454f7d5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=05f3bbaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc932304" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -262,7 +262,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Use <code class="docutils literal notranslate"><span class="pre">&#64;torch.library.custom_op</span></code> to register the op with the PyTorch dispatcher, and <code class="docutils literal notranslate"><span class="pre">register_fake</span></code> to provide the abstract implementation needed by <code class="docutils literal notranslate"><span class="pre">torch.export</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2">
 </span><span data-line="3">
 </span><span data-line="4"><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;my_lib::scaled_add&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">())</span>
@@ -285,7 +285,7 @@ data-aria-dark="Switch to auto color mode">
 <h3>Step 2 — Use the Op in a model<a class="headerlink" href="#step-2-use-the-op-in-a-model" title="Link to this heading">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 </span><span data-line="3">
 </span><span data-line="4">
@@ -302,7 +302,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Export and run decompositions as usual. Custom ops are not touched by the decomposition pass, so <code class="docutils literal notranslate"><span class="pre">my_lib::scaled_add</span></code> remains as a single node in the graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_decomp_table</span>
 </span><span data-line="4">
@@ -346,7 +346,7 @@ data-aria-dark="Switch to auto color mode">
 <p>The op’s qualified name in the FX graph always carries the overload suffix <code class="docutils literal notranslate"><span class="pre">.default</span></code>, so register it as <code class="docutils literal notranslate"><span class="pre">&quot;my_lib::scaled_add.default&quot;</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai._compiler.dialects</span><span class="w"> </span><span class="kn">import</span> <span class="n">coreai</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai._compiler.dialects</span><span class="w"> </span><span class="kn">import</span> <span class="n">coreai</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchConverter</span>
 </span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch._utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_operands</span>
@@ -371,7 +371,7 @@ data-aria-dark="Switch to auto color mode">
 <h3>Step 5 — Convert<a class="headerlink" href="#step-5-convert" title="Link to this heading">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">coreai_program</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">add_exported_program</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">coreai_program</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">add_exported_program</span><span class="p">(</span>
 </span><span data-line="2">    <span class="n">exported</span><span class="p">,</span>
 </span><span data-line="3">    <span class="n">input_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span>
 </span><span data-line="4">    <span class="n">output_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">],</span>
@@ -386,7 +386,7 @@ data-aria-dark="Switch to auto color mode">
 <h3>Step 6 — Inspect the generated CoreAI graph<a class="headerlink" href="#step-6-inspect-the-generated-coreai-graph" title="Link to this heading">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">coreai_program</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">coreai_program</span><span class="p">))</span>
 </span></pre></div>
 </div>
 </div>
@@ -400,7 +400,7 @@ data-aria-dark="Switch to auto color mode">
 <p>For example, the default lowering for <code class="docutils literal notranslate"><span class="pre">aten._adaptive_avg_pool2d</span></code> handles dynamic input shapes and non-divisible output sizes. If your model always runs with static shapes and an output size that evenly divides the input (e.g., ResNet’s final <code class="docutils literal notranslate"><span class="pre">adaptive_avg_pool2d(output_size=(1,</span> <span class="pre">1))</span></code>), you can replace it with a simpler <code class="docutils literal notranslate"><span class="pre">sumpool2d</span></code> + divide:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="3"><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 </span><span data-line="4">
@@ -520,5 +520,6 @@ data-aria-dark="Switch to auto color mode">
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script src="../_static/sidebar-wrap.js?v=1515cd75"></script>
       <script src="../_static/copy-page-button.js?v=d5e0191b"></script></body>
 </html>

@@ -7,9 +7,9 @@
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=9454f7d5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=05f3bbaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc932304" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -243,7 +243,7 @@ data-aria-dark="Switch to auto color mode">
 <h2>Define a Model<a class="headerlink" href="#define-a-model" title="Link to this heading">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 </span><span data-line="3">
 </span><span data-line="4">
@@ -274,7 +274,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Use <code class="docutils literal notranslate"><span class="pre">torch.export.export</span></code> to capture the computation graph as an <code class="docutils literal notranslate"><span class="pre">ExportedProgram</span></code>. The result is shape- and dtype-specialized to the provided example input.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">example_input</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">example_input</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),)</span>
 </span><span data-line="2"><span class="n">exported</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">export</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">example_input</span><span class="p">)</span>
 </span></pre></div>
 </div>
@@ -286,7 +286,7 @@ data-aria-dark="Switch to auto color mode">
 <p><code class="docutils literal notranslate"><span class="pre">get_decomp_table()</span></code> returns the default PyTorch ATen decomposition table minus the operations that <code class="docutils literal notranslate"><span class="pre">TorchConverter</span></code> lowers as composite ops, so those operations are preserved in the exported graph rather than being decomposed into lower-level primitives.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_decomp_table</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_decomp_table</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="n">exported</span> <span class="o">=</span> <span class="n">exported</span><span class="o">.</span><span class="n">run_decompositions</span><span class="p">(</span><span class="n">get_decomp_table</span><span class="p">())</span>
 </span></pre></div>
@@ -303,7 +303,7 @@ data-aria-dark="Switch to auto color mode">
 <p><code class="docutils literal notranslate"><span class="pre">TorchConverter</span></code> walks the FX graph node-by-node and emits CoreAI operations, returning a <code class="docutils literal notranslate"><span class="pre">AIProgram</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchConverter</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">coreai_torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchConverter</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="n">converter</span> <span class="o">=</span> <span class="n">TorchConverter</span><span class="p">()</span>
 </span><span data-line="4"><span class="n">coreai_program</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">add_exported_program</span><span class="p">(</span>
@@ -322,7 +322,7 @@ data-aria-dark="Switch to auto color mode">
 <p>The <code class="docutils literal notranslate"><span class="pre">AIProgram</span></code> must be compiled to a native executable before it can run inference. The full async function below saves the program to an <code class="docutils literal notranslate"><span class="pre">.aimodel</span></code> directory, loads the executable, runs the <code class="docutils literal notranslate"><span class="pre">main</span></code> function on the example input, and compares the result to PyTorch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
 </span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span data-line="3">
 </span><span data-line="4"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -375,7 +375,7 @@ data-aria-dark="Switch to auto color mode">
 <p>The same pattern works with production models. Here is the full pipeline for torchvision’s MobileNetV2:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2"><span class="kn">import</span><span class="w"> </span><span class="nn">torchvision.models</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tv_models</span>
 </span><span data-line="3">
 </span><span data-line="4"><span class="n">model</span> <span class="o">=</span> <span class="n">tv_models</span><span class="o">.</span><span class="n">mobilenet_v2</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
@@ -401,7 +401,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Compile and run the same way as above:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
 </span><span data-line="2">    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
 </span><span data-line="3">        <span class="n">asset</span> <span class="o">=</span> <span class="n">coreai_program</span><span class="o">.</span><span class="n">save_asset</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;mobilenet_v2_example.aimodel&quot;</span><span class="p">)</span>
 </span><span data-line="4">        <span class="k">async</span> <span class="k">with</span> <span class="n">asset</span><span class="o">.</span><span class="n">executable</span><span class="p">()</span> <span class="k">as</span> <span class="n">ai_model</span><span class="p">:</span>
@@ -423,7 +423,7 @@ data-aria-dark="Switch to auto color mode">
 <p><code class="docutils literal notranslate"><span class="pre">add_pytorch_module()</span></code> accepts an <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> directly. You still provide an <code class="docutils literal notranslate"><span class="pre">export_fn</span></code> that handles export and decomposition:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="kn">import</span><span class="w"> </span><span class="nn">coreai_torch</span>
 </span><span data-line="4">
@@ -508,5 +508,6 @@ data-aria-dark="Switch to auto color mode">
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script src="../_static/sidebar-wrap.js?v=1515cd75"></script>
       <script src="../_static/copy-page-button.js?v=d5e0191b"></script></body>
 </html>
